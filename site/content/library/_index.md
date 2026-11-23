@@ -6,7 +6,7 @@ template = "guide.html"
 
 ## Add the library
 
-With Rust 1.89 or newer, run `cargo add knx --path ../knx` in your application. Adjust the path to the checkout. The default crate has no external dependencies.
+With Rust 1.89 or newer, run `cargo add knx` in your application. The default crate has no external dependencies.
 
 ## Decode signed watts
 

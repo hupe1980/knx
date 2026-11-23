@@ -6,10 +6,10 @@ template = "guide.html"
 
 ## Install and try the example
 
-From the source checkout, install the CLI and render the bundled kitchen example.
+Install the CLI from crates.io and render the bundled kitchen example.
 
 ```sh
-cargo install --locked --path . --features cli
+cargo install knx --locked --features cli
 knx example | knx render -
 ```
 

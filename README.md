@@ -4,7 +4,7 @@ A Rust library for KNX datapoints, group telegrams and KNXnet/IP. Use the group 
 
 ## Use the library
 
-With Rust 1.89 or newer, add the local checkout with `cargo add knx --path ../knx`. Adjust the path to match your directory layout.
+With Rust 1.89 or newer, run `cargo add knx` in your application.
 
 ```rust
 use knx::{GroupAddress, decode_temperature_celsius};
@@ -14,9 +14,9 @@ assert_eq!(u16::from(room), 4355);
 assert_eq!(decode_temperature_celsius(&[0x07, 0xd0]), Ok(20.0)); // DPT 9.001
 ```
 
-Run `cargo run --locked --example datapoints` from the checkout, or `cargo doc --all-features --no-deps --open` for the full API reference. [Documentation](https://hupe1980.github.io/knx/documentation/) · [Search datapoints](https://hupe1980.github.io/knx/inventory/)
+Run `cargo run --locked --example datapoints` from the checkout. [Rust API reference](https://docs.rs/knx/) · [Documentation](https://hupe1980.github.io/knx/documentation/) · [Search datapoints](https://hupe1980.github.io/knx/inventory/)
 
-Use the transport APIs to discover gateways, exchange group telegrams, inspect bus-monitor captures and bind commissioned lights or sunblinds. Choose Cargo features according to the interface your application uses. [Transport guide](site/content/transport/_index.md)
+Use the transport APIs to discover gateways, exchange group telegrams, inspect bus-monitor captures and bind commissioned lights or sunblinds. Choose Cargo features according to the interface your application uses. [Transport guide](https://hupe1980.github.io/knx/transport/)
 
 | Feature | Use it for |
 | --- | --- |
@@ -29,16 +29,16 @@ Use the transport APIs to discover gateways, exchange group telegrams, inspect b
 
 ## Optional CLI
 
-Install from the checkout to inspect payloads and preview a Home Assistant light mapping offline.
+Install the CLI to inspect payloads and preview a Home Assistant light mapping offline.
 
 ```sh
-cargo install --locked --path . --features cli
+cargo install knx --locked --features cli
 knx decode 9.001 07 D0       # 20 °C
 knx encode 8.005 -2 s        # FF FE
 knx example | knx render -
 ```
 
-For mapping, handover reports and exit codes, run `knx guide` or read the [field guide](site/content/guide/_index.md). Run `knx replay` for the synthetic charging-meter example.
+For mapping, handover reports and exit codes, run `knx guide` or read the [field guide](https://hupe1980.github.io/knx/guide/). Run `knx replay` for the synthetic charging-meter example.
 
 ## Development
 

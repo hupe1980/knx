@@ -4,6 +4,7 @@ version = "0.1.0"
 edition = "2024"
 rust-version = "1.89"
 repository = "https://github.com/hupe1980/knx"
+documentation = "https://docs.rs/knx"
 homepage = "https://hupe1980.github.io/knx/"
 keywords = ["knx", "knxnetip", "automation", "datapoint", "building"]
 categories = ["encoding", "network-programming"]

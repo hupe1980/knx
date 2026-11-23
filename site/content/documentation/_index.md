@@ -8,10 +8,10 @@ template = "documentation.html"
 
 A KNX group address identifies a function, such as a room temperature. The datapoint type (DPT) assigned in the ETS commissioning project gives its bytes a meaning. For DPT 9.001, the two bytes below represent degrees Celsius.
 
-From a Rust 1.89 or newer application, add the library from a local checkout.
+From a Rust 1.89 or newer application, add the library from crates.io.
 
 ```sh
-cargo add knx --path ../knx
+cargo add knx
 ```
 
 ```rust
