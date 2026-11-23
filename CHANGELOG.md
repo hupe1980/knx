@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.1 (2026-11-23)
+
+- Updated the README and guides with crates.io installation commands and a link to the Rust API reference.
+- Configured tag-based releases through crates.io Trusted Publishing.
+
 ## 0.1.0 (2026-11-23)
 
 - Decode and encode KNX datapoints in Rust with zero default dependencies. Bind commissioned addresses to meters, lights, temperature sensors and sunblinds.
