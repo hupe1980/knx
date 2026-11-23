@@ -1,0 +1,4 @@
+room: Kitchen
+light: ceiling
+command: {address: "1/1/1", dpt: "1.001"}
+feedback: {address: "1/1/2", dpt: "1.001"}

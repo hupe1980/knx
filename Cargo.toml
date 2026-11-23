@@ -1,0 +1,98 @@
+[package]
+name = "knx"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.89"
+repository = "https://github.com/hupe1980/knx"
+homepage = "https://hupe1980.github.io/knx/"
+keywords = ["knx", "knxnetip", "automation", "datapoint", "building"]
+categories = ["encoding", "network-programming"]
+include = [
+    "/src/**/*.rs",
+    "/tests/**/*.rs",
+    "/examples/kitchen.yaml",
+    "/examples/decode_meter.rs",
+    "/examples/decode_power.rs",
+    "/examples/datapoints.rs",
+    "/examples/interface_objects.rs",
+    "/examples/charging.json",
+    "/site/static/standards.csv",
+    "/site/content/inventory/_index.md",
+    "/site/templates/inventory.html",
+    "/tools/standards_inventory.py",
+    "/tools/release_evidence.py",
+    "/tools/interop/switch_peer.py",
+    "/tools/interop/switch_client.rs",
+    "/tools/interop/switch-peer.lock",
+    "/tools/interop/application_profiles_client.rs",
+    "/tools/interop/application_profiles_peer.py",
+    "/tools/interop/data_secure_peer.py",
+    "/tools/interop/data_secure_client.rs",
+    "/tools/interop/tunnel_peer.py",
+    "/tools/interop/tunnel_client.rs",
+    "/tools/interop/SecureRoutingPeer.java",
+    "/tools/interop/DataSyncPeer.java",
+    "/tools/interop/data_sync_client.rs",
+    "/tools/interop/calimero_client.rs",
+    "/tools/interop/ip_secure_client.rs",
+    "/tools/interop/loopback.knxkeys",
+    "/tools/interop/calimero_loopback.py",
+    "/tools/test_release_evidence.py",
+    "/site/config.toml",
+    "/site/content/_index.md",
+    "/site/content/documentation/_index.md",
+    "/site/templates/documentation.html",
+    "/site/content/library/_index.md",
+    "/site/content/transport/_index.md",
+    "/site/content/guide/_index.md",
+    "/site/templates/index.html",
+    "/site/templates/base.html",
+    "/site/templates/guide.html",
+    "/site/static/style.css",
+    "/site/static/mark.svg",
+    "/site/static/kitchen.webp",
+    "/README.md",
+    "/CHANGELOG.md",
+    "/LICENSE-APACHE",
+    "/LICENSE-MIT",
+]
+license = "MIT OR Apache-2.0"
+description = "KNX datapoint codecs, cEMI group telegrams and KNXnet/IP for Rust applications"
+
+[package.metadata.docs.rs]
+all-features = true
+
+[[bin]]
+name = "knx"
+path = "src/main.rs"
+required-features = ["cli"]
+
+[features]
+default = []
+keyring = ["data-secure", "ip-secure", "dep:roxmltree", "dep:base64", "dep:pbkdf2"]
+ip-secure = ["dep:aes", "dep:ctr", "dep:subtle", "dep:zeroize", "dep:curve25519-dalek", "dep:sha2", "dep:getrandom"]
+secure-routing = ["dep:aes", "dep:ctr", "dep:subtle", "dep:zeroize", "dep:getrandom"]
+linux-routing = ["dep:nix"]
+data-secure = ["dep:getrandom", "dep:aes", "dep:cbc", "dep:ctr", "dep:subtle", "dep:zeroize"]
+cli = ["dep:clap", "dep:serde", "dep:serde-saphyr", "dep:serde_json", "dep:tempfile"]
+
+[dependencies]
+roxmltree = { version = "0.21.1", optional = true }
+base64 = { version = "0.22.1", optional = true }
+pbkdf2 = { version = "0.12.2", optional = true }
+curve25519-dalek = { version = "4.1.3", optional = true }
+getrandom = { version = "0.3.4", optional = true }
+sha2 = { version = "0.10.9", optional = true }
+aes = { version = "0.8.4", optional = true, features = ["zeroize"] }
+cbc = { version = "0.1.2", optional = true, features = ["zeroize"] }
+ctr = { version = "0.9.2", optional = true, features = ["zeroize"] }
+subtle = { version = "2.6", optional = true }
+zeroize = { version = "1.8", optional = true }
+clap = { version = "4.6", optional = true, features = ["derive"] }
+serde = { version = "1", optional = true, features = ["derive"] }
+serde-saphyr = { version = "2.2", optional = true, default-features = false, features = ["serialize", "deserialize"] }
+serde_json = { version = "1", optional = true }
+tempfile = { version = "3", optional = true }
+
+[target.'cfg(target_os = "linux")'.dependencies]
+nix = { version = "0.32", optional = true, default-features = false, features = ["net", "uio"] }

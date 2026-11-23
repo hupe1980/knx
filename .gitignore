@@ -1,0 +1,11 @@
+# Local research and specification workflow, as in iec60870.
+/concepts/
+/specs/
+/.specify/
+/.claude/
+/target/
+/site/public/
+
+/.agents/skills/speckit-*/
+
+__pycache__/

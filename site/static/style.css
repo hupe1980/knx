@@ -1,0 +1,183 @@
+:root {
+  color-scheme: light;
+  --paper: #fafbf8;
+  --ink: #182923;
+  --muted: #495b53;
+  --forest: #144a40;
+  --line: #cdd5cd;
+  --lime: #ccf595;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+}
+* { box-sizing: border-box }
+body, figure, h1, h2, p, pre { margin: 0 }
+body { line-height: 1.55 }
+code { font-family: var(--mono) }
+a { color: var(--forest); text-underline-offset: .23em }
+a:hover { text-decoration-thickness: 2px }
+a:focus-visible { outline: 3px solid #b95908; outline-offset: 4px }
+.wrap { width: min(90%, 82rem); margin-inline: auto }
+.skip { position: absolute; left: 1rem; top: -6rem; z-index: 5; background: white; padding: .7rem }
+.skip:focus { top: .5rem }
+.masthead { border-bottom: 1px solid var(--line) }
+.bar, .bar nav, .brand, .actions, .eyebrow, .footer { display: flex; align-items: center }
+.bar { justify-content: space-between; min-height: 4.7rem; gap: 1rem }
+.brand { gap: .55rem; font-size: 1.9rem; font-weight: 750; letter-spacing: -.08em; line-height: 1; text-decoration: none; color: var(--ink) }
+.bar nav { gap: clamp(.85rem, 3vw, 2.5rem) }
+.bar nav a, .footer a { color: var(--ink); font-size: .94rem; font-weight: 560; text-decoration: none }
+.bar nav a:hover, .footer a:hover { text-decoration: underline }
+.bar [aria-current] { text-decoration: underline; text-decoration-color: var(--forest); text-underline-offset: .48em; text-decoration-thickness: 2px }
+.repo { border-left: 1px solid var(--line); padding-left: clamp(.85rem, 3vw, 2.5rem) }
+.hero, .example { display: grid; grid-template-columns: .9fr 1.1fr; align-items: center; gap: clamp(2rem, 5vw, 5rem) }
+.hero { padding-block: clamp(3.5rem, 6vw, 6rem); border-bottom: 1px solid var(--line) }
+.eyebrow, .fixture small, .term-bar { font-family: var(--mono); font-size: .82rem; font-weight: 550 }
+.eyebrow { color: var(--forest); gap: .7rem; letter-spacing: .025em }
+.rule { width: 1.75rem; height: 2px; background: currentColor }
+h1, h2 { text-wrap: balance }
+.hero h1 { font-size: clamp(4.3rem, 7.2vw, 7rem); letter-spacing: -.048em; line-height: .97; font-weight: 650; margin: 1.3rem 0 1.45rem }
+.hero h1 em { font-family: "Baskervville", Georgia, serif; font-weight: 400; color: var(--forest); letter-spacing: -.07em }
+.lead { max-width: 37ch; font-size: clamp(1.13rem, 1.5vw, 1.4rem); color: var(--muted); line-height: 1.5 }
+.actions { gap: 1.5rem; flex-wrap: wrap; margin-top: 1.8rem }
+.button { display: inline-flex; justify-content: center; align-items: center; min-height: 2.9rem; padding: .65rem 1.25rem; border-radius: .35rem; background: var(--forest); color: #fff; text-decoration: none; font-weight: 650 }
+.button:hover { background: #092e27 }
+.text-link { font-weight: 600 }
+.fixture { background: #133b34; color: white; border-radius: .6rem; overflow: hidden }
+.scene { position: relative }
+.scene img { display: block; width: 100%; height: auto }
+.target { position: absolute; inset: 19% 32% 53%; --tick: #efffbd; --arm: 12px;
+  background:
+    linear-gradient(var(--tick),var(--tick)) left top / var(--arm) 2px,
+    linear-gradient(var(--tick),var(--tick)) left top / 2px var(--arm),
+    linear-gradient(var(--tick),var(--tick)) right top / var(--arm) 2px,
+    linear-gradient(var(--tick),var(--tick)) right top / 2px var(--arm),
+    linear-gradient(var(--tick),var(--tick)) left bottom / var(--arm) 2px,
+    linear-gradient(var(--tick),var(--tick)) left bottom / 2px var(--arm),
+    linear-gradient(var(--tick),var(--tick)) right bottom / var(--arm) 2px,
+    linear-gradient(var(--tick),var(--tick)) right bottom / 2px var(--arm);
+  background-repeat: no-repeat }
+figcaption { display: grid; grid-template-columns: 1.6fr 1fr 1fr; padding: 1rem 1.4rem; gap: .8rem; align-items: center }
+figcaption div + div { border-left: 1px solid #527268; padding-left: 1.1rem }
+.fixture small { color: #c9daca; display: block; font-weight: 400; font-size: .78rem }
+.fixture strong, .fixture code { display: block; margin-top: .15rem; font-size: 1rem }
+.fixture code { color: var(--lime) }
+.example { align-items: start; padding-block: clamp(3rem, 6vw, 6rem); scroll-margin-top: 2rem }
+.example h2, .handover-link h2 { font-size: clamp(2.45rem, 4.1vw, 4rem); letter-spacing: -.04em; font-weight: 620; line-height: 1.05 }
+.example h2 { margin: 1rem 0 }
+.example-copy p:not(.eyebrow), .handover-link p { max-width: 40ch; color: var(--muted); font-size: 1.08rem }
+.example-copy .text-link { display: inline-block; margin-top: 1.1rem }
+.terminal, .prose pre { border-radius: .5rem; color: #f1f6ef; background: #162c27; overflow: auto }
+.term-bar { display: flex; align-items: center; gap: .65rem; color: #caddcf; border-bottom: 1px solid #3b514a; padding: .8rem 1.35rem }
+.terminal-icon { color: var(--lime); font-size: 1.05rem }
+.shell-command { padding: 1.3rem 1.45rem .8rem; font-size: .93rem }
+.shell-command span, .terminal i { color: var(--lime) }
+.terminal pre { padding: 0 1.45rem 1.55rem; font-size: .94rem; line-height: 1.65 }
+.terminal b { font-weight: 400; color: #9cd6c5 }
+.terminal i { font-style: normal }
+.handover-link { display: flex; justify-content: space-between; gap: 2rem; align-items: center; border-top: 1px solid var(--line); padding: 2.4rem 0 3rem }
+.handover-link h2 { font-size: 2rem; margin-bottom: .5rem }
+.handover-link p { max-width: 60ch }
+.secondary { background: transparent; border: 1px solid var(--forest); color: var(--forest); white-space: nowrap }
+.secondary:hover { background: #e1ecdf }
+.footer { min-height: 5rem; border-top: 1px solid var(--line); gap: 1rem; color: var(--muted); font-size: .85rem }
+.footer .foot-brand { font-size: 1.3rem; letter-spacing: -.07em; font-weight: 700 }
+.footer a:last-child { margin-left: auto }
+.guide-layout { display: grid; grid-template-columns: minmax(11rem, 15rem) minmax(0, 48rem); grid-template-areas: "contents heading" "contents prose"; column-gap: clamp(2rem, 6vw, 6rem); padding-block: 3.7rem 5rem }
+.contents { grid-area: contents }
+.guide-heading { grid-area: heading }
+.prose { grid-area: prose; min-width: 0 }
+.contents nav { position: sticky; top: 2rem; border-left: 2px solid var(--line); padding-left: 1rem }
+.contents ol { padding: 0; list-style: none; margin: .7rem 0 0 }
+.contents a { display: block; padding: .38rem 0; font-size: .96rem; text-decoration: none }
+.contents a:hover { text-decoration: underline }
+.guide-heading h1 { font-size: clamp(2.9rem, 5.5vw, 5rem); line-height: 1.02; letter-spacing: -.04em; margin: 1rem 0 }
+.guide-heading .lead { max-width: 48ch }
+.guide-heading { padding-bottom: 2rem; border-bottom: 1px solid var(--line) }
+.prose { font-size: 1.0625rem; line-height: 1.7; overflow-wrap: break-word }
+.prose h2 { font-size: clamp(1.65rem, 2.8vw, 2.3rem); letter-spacing: -.045em; line-height: 1.18; scroll-margin-top: 1rem; margin: 2.3rem 0 .9rem }
+.prose p, .prose table, .prose ol, .prose pre { margin: 1rem 0 }
+.prose pre { padding: 1.1rem 1.25rem; font-size: .91rem; line-height: 1.6 }
+.prose :not(pre) > code { background: #e9efe8; border-radius: 3px; padding: .06em .22em; font-size: .9em; overflow-wrap: anywhere }
+.prose table { border-collapse: collapse; width: 100%; font-size: .96rem }
+.prose td, .prose th { padding: .65rem .55rem; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line) }
+.prose th { background: #e9efe8; font-weight: 600 }
+.prose ol { padding-left: 1.5rem }
+.prose li { margin: .55rem 0; padding-left: .25rem }
+@media (max-width: 52rem) {
+  .hero, .example { grid-template-columns: 1fr; gap: 2rem }
+  .hero { padding-block: 2.6rem 3rem }
+  .hero h1 { font-size: clamp(4rem, 12vw, 6.5rem) }
+  .example h2 br { display: none }
+  .example-copy p:not(.eyebrow) { max-width: 55ch }
+  .guide-layout { display: flex; flex-direction: column; gap: 1.8rem; padding-top: 2rem }
+  .prose h2:first-child { margin-top: 0 }
+  .contents nav { position: static }
+  .contents ol { display: flex; flex-wrap: wrap; gap: .1rem 1rem }
+  .handover-link { align-items: flex-start; flex-direction: column; gap: 1rem }
+}
+@media (max-width: 28rem) {
+  .bar { min-height: 4rem }
+  .brand { font-size: 1.5rem; gap: .3rem }
+  .brand img { width: 27px; height: 27px }
+  .bar nav { gap: .8rem }
+  .bar nav a { font-size: .87rem }
+  .repo { padding-left: .8rem }
+  .actions { gap: 1rem }
+  figcaption { padding: .8rem; gap: .5rem }
+  figcaption div + div { padding-left: .65rem }
+  .fixture strong, .fixture code { font-size: .92rem }
+  .prose th, .prose td { padding: .55rem .3rem }
+}
+
+@media print {
+  :root { --paper: white; --ink: black }
+  .masthead, .contents, .footer, .skip { display: none }
+  .wrap { width: auto }
+  .guide-layout { display: block; padding: 0 }
+  .guide-heading h1 { font-size: 2.25rem }
+  .prose h2 { break-after: avoid; font-size: 1.4rem }
+  .prose pre, .prose tr { break-inside: avoid }
+  .prose pre { white-space: pre-wrap; color: black; background: white; border: 1px solid #aaa }
+}
+
+.inventory { padding-block: 3rem }
+.inventory-notes { max-width: 76ch; margin: 1rem 0 2rem }
+.inventory summary { cursor: pointer }
+#lookup label { display: block; font-weight: 600 }
+#lookup input { width: min(100%, 24rem); margin: .4rem .5rem .4rem 0; padding: .55rem; font: inherit }
+.inventory-table { max-width: 100%; overflow-x: auto }
+.inventory-table caption { text-align: left; font-weight: 600; padding-block: 1rem }
+.inventory-table tr:target { background: #e9efe8 }
+@media (max-width: 39rem) {
+  .bar { flex-wrap: wrap; gap: .25rem; padding-block: .55rem }
+  .bar nav { flex-wrap: wrap; gap: .25rem 1rem; width: 100% }
+  .bar nav a { padding-block: .35rem }
+}
+
+.codec-coverage { overflow-x: auto }
+.codec-coverage table { min-width: 42rem }
+
+.docs-hub { padding-block: clamp(2.5rem, 6vw, 5rem) }
+.docs-hub .lead { max-width: 58ch }
+.docs-grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(16rem, .8fr); gap: clamp(2rem, 7vw, 7rem); margin-top: 2.5rem }
+.docs-start { grid-area: auto }
+.docs-start h2:first-child { margin-top: 0 }
+.guide-list h2 { font-size: 1.35rem; margin-bottom: .8rem }
+.guide-list a { display: grid; grid-template-columns: 1fr auto; gap: .3rem .75rem; padding: 1rem 0; border-top: 1px solid var(--line); text-decoration: none }
+.guide-list a::after { content: "→"; grid-column: 2; grid-row: 1; color: var(--forest) }
+.guide-list a:hover strong { text-decoration: underline }
+.guide-list span { grid-column: 1; color: var(--muted); font-size: .96rem }
+@media (min-width: 52.01rem) {
+  .contents nav { max-height: calc(100vh - 4rem); overflow-y: auto }
+}
+@media (max-width: 52rem) {
+  .docs-grid { grid-template-columns: minmax(0, 1fr) }
+}
+.mobile-contents { display: none }
+@media (max-width: 52rem) {
+  .desktop-contents { display: none }
+  .mobile-contents { display: block; border-block: 1px solid var(--line) }
+  .mobile-contents summary { padding: .75rem 0; cursor: pointer; font-weight: 600 }
+  .mobile-contents nav { margin-bottom: 1rem }
+}

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ section.title }} · knx</title>
+  <meta name="description" content="{{ section.description }}">
+  <link rel="canonical" href="{{ section.permalink | safe }}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="knx">
+  <meta property="og:title" content="{{ section.title }}">
+  <meta property="og:description" content="{{ section.description }}">
+  <meta property="og:url" content="{{ section.permalink | safe }}">
+  <meta property="og:image" content="{{ get_url(path='kitchen.webp') | safe }}">
+  <meta property="og:image:alt" content="A brushed metal pendant lights a kitchen island.">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+  {% if section.path == "/" %}
+  {"@context":"https://schema.org","@type":"WebSite","name":"KNX for Rust","url":{{ section.permalink | json_encode | safe }},"description":{{ section.description | json_encode | safe }}}
+  {% else %}
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+    {"@type":"ListItem","position":1,"name":"KNX for Rust","item":{{ config.base_url | json_encode | safe }}},
+    {% if section.path != "/documentation/" %}{"@type":"ListItem","position":2,"name":"Documentation","item":{{ get_url(path="@/documentation/_index.md") | json_encode | safe }}},{% endif %}
+    {"@type":"ListItem","position":{% if section.path == "/documentation/" %}2{% else %}3{% endif %},"name":{{ section.title | json_encode | safe }},"item":{{ section.permalink | json_encode | safe }}}
+  ]}
+  {% endif %}
+  </script>
+  <meta name="theme-color" content="#fafbf8">
+  <link rel="icon" href="{{ get_url(path='mark.svg') | safe }}" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ get_url(path='style.css', cachebust=true) | safe }}">
+</head>
+<body>
+  {% set home = get_url(path='@/_index.md') %}
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="masthead">
+    <div class="wrap bar">
+      <a class="brand" href="{{ home | safe }}" aria-label="knx homepage"><img src="{{ get_url(path='mark.svg') | safe }}" alt="" width="34" height="34">knx</a>
+      <nav aria-label="Primary">
+        <a href="{{ home | safe }}" {% if section.permalink == home %}aria-current="page"{% endif %}>Overview</a>
+        <a href="{{ get_url(path='@/documentation/_index.md') | safe }}" {% if section.path == "/documentation/" %}aria-current="page"{% endif %}>Documentation</a>
+        <a href="{{ get_url(path='@/inventory/_index.md') | safe }}" {% if section.path == "/inventory/" %}aria-current="page"{% endif %}>Datapoints</a>
+        <a class="repo" href="{{ config.extra.repository }}">GitHub</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">{% block content %}{% endblock content %}</main>
+  <footer class="wrap footer"><a class="foot-brand" href="{{ home | safe }}">knx</a><span>MIT / Apache-2.0</span><a href="{{ config.extra.repository }}">Source code</a></footer>
+</body>
+</html>

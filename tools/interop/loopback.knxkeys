@@ -1,0 +1,8 @@
+<Keyring xmlns="http://knx.org/xml/keyring/1" Project="Example" CreatedBy="Fixture" Created="2026-01-02T03:04:05" Signature="2DP5KJefsycC48FiZ47fvw==">
+<Interface Type="Tunneling" Host="7.1.0" IndividualAddress="7.1.1" UserID="2" Password="0k5WIjaOhWnmvnY5D62S35Azw8UAHaBzS9QaBOcJAHM=" Authentication="whaCRa65Gd+9L5aFl8Qe72RRpKWqiGCSJT04oqTLhxI=">
+<Group Address="2305" Senders="7.1.12"/>
+</Interface>
+<GroupAddresses>
+<Group Address="2305" Key="l4LTAfYHbBg7/B+d6xlsLw=="/>
+</GroupAddresses>
+</Keyring>

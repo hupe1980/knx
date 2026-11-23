@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="wrap">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="intro">
+      <h1 id="hero-title">KNX for<br><em>Rust.</em></h1>
+      <p class="lead">Read a meter, control a light or connect to a KNX/IP gateway from Rust. Start with a dependency-free library for datapoints and telegrams.</p>
+      <div class="actions"><a class="button" href="{{ get_url(path='@/documentation/_index.md') | safe }}">Get started</a><a class="text-link" href="{{ get_url(path='@/inventory/_index.md') | safe }}">Look up a subtype</a></div>
+    </div>
+    <figure class="fixture">
+      <div class="scene">
+        <img src="{{ get_url(path='kitchen.webp') | safe }}" width="1200" height="800" alt="A single illuminated metal pendant above a kitchen island." fetchpriority="high">
+        <div class="target" aria-hidden="true"></div>
+      </div>
+      <figcaption>
+        <div class="fixture-title"><small>Commissioned light</small><strong>Kitchen ceiling</strong></div>
+        <div><small>Command</small><code>1/1/1</code></div>
+        <div><small>Feedback</small><code>1/1/2</code></div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="example" id="example" aria-labelledby="example-title">
+    <div class="example-copy">
+      <p class="eyebrow"><span class="rule"></span>DPT 14.056</p>
+      <h2 id="example-title">From bytes<br>to watts.</h2>
+      <p>Four bytes from a charging meter decode to 24,000 W. The example checks the source, consumption range and timestamp before accepting the reading.</p>
+      <a class="text-link" href="{{ get_url(path='@/library/_index.md') | safe }}#decode-a-reading">Read the Rust example</a>
+    </div>
+    <div class="terminal">
+      <div class="term-bar"><span class="terminal-icon" aria-hidden="true">›_</span> Offline meter example</div>
+      <div class="shell-command"><span aria-hidden="true">$ </span><code>cargo run --quiet --example decode_meter</code></div>
+      <pre aria-label="Decoded power reading"><code>24000 W at 1795335135</code></pre>
+    </div>
+  </section>
+  <section class="handover-link"><div><h2>Connect to a gateway</h2><p>Choose tunnelling or multicast routing for your installation and bind the group addresses assigned in ETS.</p></div><a class="button secondary" href="{{ get_url(path='@/transport/_index.md') | safe }}#select-a-knxnet-ip-gateway">Transport guide</a></section>
+</div>
+{% endblock content %}

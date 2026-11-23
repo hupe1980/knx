@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+<article class="wrap inventory">
+  <header class="guide-heading"><a class="eyebrow" href="{{ get_url(path='@/documentation/_index.md') | safe }}">Documentation</a><h1>{{ section.title }}</h1><p class="lead">{{ section.description }}</p></header>
+  <details class="inventory-notes"><summary>How to read and verify this edition</summary>
+    <div class="prose">{{ section.content | safe }}</div>
+  </details>
+  <div id="lookup" hidden>
+    <label for="query">Filter by identifier, name or support status</label>
+    <input id="query" type="search" placeholder="e.g. 5.004, power, tested">
+    <output id="matches" for="query" aria-live="polite"></output>
+  </div>
+  {% set catalog = load_data(path="static/standards.csv", format="csv") %}
+  <div class="prose inventory-table" role="region" aria-label="KNX edition inventory" tabindex="0">
+    <table>
+      <caption>Datapoints, parameters and legacy formats · v02.02.01</caption>
+      <thead><tr><th>Kind</th><th>Identifier</th><th>Name</th><th>Section</th><th>Encode</th><th>Decode</th></tr></thead>
+      <tbody>{% for row in catalog.records %}
+        <tr id="{{ row[1] }}-{% if row[2] %}{{ row[2] }}{% else %}{{ row[3] }}{% endif %}"><td>{% if row[11] %}{% if row[11] == "value" %}Parameter · value validation{% elif row[11] == "layout" %}Parameter · layout only{% else %}Parameter · unspecified format{% endif %}{% else %}{{ row[1] }}{% endif %}</td><td>{% if row[2] %}{{ row[2] }}{% else %}—{% endif %}</td><td>{{ row[3] }}</td><td>{{ row[4] }}</td>{% if row[11] %}<td>N/A</td><td>N/A</td>{% else %}<td>{{ row[6] }}</td><td>{{ row[7] }}</td>{% endif %}</tr>
+      {% endfor %}</tbody>
+    </table>
+  </div>
+</article>
+<script>
+  const query = document.getElementById('query');
+  const matches = document.getElementById('matches');
+  const rows = Array.from(document.querySelectorAll('.inventory-table tbody tr'), row => ({
+    row, identifier: row.cells[1].textContent.toLowerCase(), terms: Array.from(row.cells, cell => cell.textContent.toLowerCase()).join(' ')
+  }));
+  function filterRows() {
+    const term = query.value.trim().toLowerCase();
+    const exactId = /^\d+\.\d{3,4}$|^[0-9a-f]{4}h$/.test(term);
+    let count = 0;
+    for (const {row, identifier, terms} of rows) {
+      if (term === "tested" || term === "layout-tested") {
+        row.hidden = row.cells[4].textContent !== term && row.cells[5].textContent !== term;
+      } else {
+        row.hidden = exactId ? identifier !== term : !terms.includes(term);
+      }
+      if (!row.hidden) count++;
+    }
+    matches.textContent = count === 1 ? '1 entry' : count + ' entries';
+  }
+  query.addEventListener('input', filterRows);
+  document.querySelector('.inventory-notes').addEventListener('click', event => {
+    if (event.target.closest('a[href^="#"]')) {
+      query.value = '';
+      filterRows();
+    }
+  });
+  filterRows();
+  document.getElementById('lookup').hidden = false;
+</script>
+{% endblock content %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<article class="wrap guide-layout" aria-labelledby="guide-title">
+  <header class="guide-heading"><a class="eyebrow" href="{{ get_url(path='@/documentation/_index.md') | safe }}">Documentation</a><h1 id="guide-title">{{ section.title }}</h1><p class="lead">{{ section.description }}</p></header>
+  <aside class="contents">
+    {% set links %}<ol>{% for item in section.toc %}<li><a href="#{{ item.id }}">{{ item.title }}</a></li>{% endfor %}</ol>{% endset %}
+    <nav class="desktop-contents" aria-label="Guide contents">
+      <p class="eyebrow">On this page</p>{{ links | safe }}
+    </nav>
+    <details class="mobile-contents"><summary>On this page</summary><nav aria-label="Guide contents">{{ links | safe }}</nav></details>
+  </aside>
+  <div class="prose">{{ section.content | safe }}</div>
+</article>
+{% endblock content %}

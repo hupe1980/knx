@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<article class="wrap docs-hub">
+  <header class="guide-heading">
+    <h1>{{ section.title }}</h1>
+    <p class="lead">Work with commissioned KNX points from Rust, from the first decoded byte to a gateway connection.</p>
+  </header>
+  <div class="docs-grid">
+    <section class="prose docs-start">{{ section.content | safe }}</section>
+    <nav class="guide-list" aria-label="Documentation guides">
+      <h2>Explore the guides</h2>
+      {% for path in ["library", "transport", "inventory", "guide"] %}
+        {% set doc = get_section(path=path ~ "/_index.md") %}
+        <a href="{{ doc.permalink | safe }}"><strong>{{ doc.title }}</strong><span>{{ doc.description }}</span></a>
+      {% endfor %}
+    </nav>
+  </div>
+</article>
+{% endblock content %}

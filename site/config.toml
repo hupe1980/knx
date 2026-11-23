@@ -1,0 +1,16 @@
+base_url = "https://hupe1980.github.io/knx"
+title = "knx"
+description = "KNX datapoint codecs, group telegrams and KNXnet/IP for Rust applications."
+default_language = "en"
+compile_sass = false
+build_search_index = false
+
+[link_checker]
+# KNX Help Center returns HTTP 403 to Zola for these verified articles.
+skip_prefixes = [
+    "https://support.knx.org/hc/en-us/articles/37592800979346-Datapoint-Type-selection-in-the-Group-Monitor",
+    "https://support.knx.org/hc/en-us/articles/16292302904850-APDU-length-error-message",
+]
+
+[extra]
+repository = "https://github.com/hupe1980/knx"
